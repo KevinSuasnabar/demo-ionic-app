@@ -1,0 +1,57 @@
+<app-header title="Registro"></app-header>
+
+
+<ion-content>
+    <h3 class="ion-text-center">Rellene el formulario</h3>
+    <form #f="ngForm" (ngSubmit)="onRegister()" novalidate>
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+            <ion-item>
+                <ion-label position="floating">Nombre: <ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input required type="text" name="nombre"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Nombre de Usuario: <ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input required type="text" name="nombreUsuario"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Correo: <ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input required type="text" name="email" email></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Contrasenia: <ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input required type="password" name="contrasenia"></ion-input>
+            </ion-item>
+        </ion-list>
+
+        <div class="ion-padding">
+            <ion-button color="success" expand="block" type="submit" class="ion-no-margin">
+                <ion-icon name="person-add" slot="start"></ion-icon>
+                Crear cuenta
+            </ion-button>
+        </div>
+        <div class="ion-padding">
+            <ion-button color="warning" expand="block" class="ion-no-margin" (click)="vaciar()">
+                <ion-icon name="refresh-circle" slot="start"></ion-icon>
+                Resetear
+            </ion-button>
+        </div>
+        <div class="ion-padding">
+            <ion-button color="tertiary" expand="block" class="ion-no-margin" (click)="volver()">
+                <ion-icon name="arrow-back-circle-outline"></ion-icon> 
+                Volver
+            </ion-button>
+        </div>
+    </form>
+    <div class="ion-text-center ion-padding ion-margin-top">
+        <h4>Ya estas registrado?</h4>
+        <ion-button routerLink="/login" color="light" expand="block" class="ion-no-margin">
+            <ion-icon name="log-in" slot="start"></ion-icon>
+            Iniciar sesion
+        </ion-button>
+    </div>
+</ion-content>

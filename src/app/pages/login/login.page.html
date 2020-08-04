@@ -1,0 +1,60 @@
+<app-header title="Login"></app-header>
+
+<ion-content *ngIf="!isLogged">
+    <h3 class="ion-text-center">Rellene el formulario</h3>
+    <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+            <ion-item>
+                <ion-label position="floating">Nombre de usuario: <ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input required type="text" name="username" [(ngModel)]="username"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Contrasenia: <ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input required type="password" name="password" [(ngModel)]="password"></ion-input>
+            </ion-item>
+        </ion-list>
+
+        <div class="ion-padding">
+            <ion-button [disabled]="!f.valid" color="success" expand="block" type="submit" class="ion-no-margin">
+                <ion-icon name="log-in" slot="start"></ion-icon>
+                Iniciar sesion
+            </ion-button>
+        </div>
+        <div class="ion-padding">
+            <ion-button color="warning" expand="block" class="ion-no-margin">
+                <ion-icon name="refresh-circle" slot="start" (click)="vaciar()"></ion-icon>
+                Resetear
+            </ion-button>
+        </div>
+    </form>
+    <div class="ion-text-center">
+        <ion-label position="floating">
+            <ion-text color="danger">*</ion-text>campos obligatorios
+        </ion-label>
+    </div>
+    <ion-item-divider></ion-item-divider>
+
+    <div class="ion-text-center ion-padding ion-margin-top">
+        <h4>No toenes cuenta?</h4>
+        <ion-button routerLink="/registro" color="light" expand="block" class="ion-no-margin">
+            <ion-icon name="person-add" slot="start"></ion-icon>
+            Crear cuenta
+        </ion-button>
+    </div>
+</ion-content>
+
+<ion-content *ngIf="isLogged">
+    <div class="ion-text-center ion-margin-top ion-padding">
+        <ion-text color="primary">
+            <h2>Ya has iniciado session</h2>
+            <ion-item-divider></ion-item-divider>
+            <ion-button (click)="logOut()" color="light" expand="block" class="ion-no-margin">
+                <ion-icon name="log-out" slot="icon-only"></ion-icon>
+                Cerrar Sesion
+            </ion-button>
+        </ion-text>
+    </div>
+</ion-content>

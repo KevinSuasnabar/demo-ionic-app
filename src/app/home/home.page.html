@@ -1,20 +1,57 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<app-header title="Inicio"></app-header>
+<ion-content>
+  <div id="container" *ngIf="!isLogged">
+    <strong>No has iniciado sesion</strong>
+  </div>
+  <div id="container" *ngIf="isLogged">
+    <strong>Bienvenido {{username}}</strong>
+    <p>Implementada con Ionic <a target="_blank" rel="noopener noreferrer"
+        href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div>
+</ion-content>
+<ion-content *ngIf="isLogged && isAdmin">
+  <div class="ion-padding">
+    <ion-card>
+      <img src="../../assets/img/imagen1.jpg" />
+      <ion-card-header>
+        <ion-card-subtitle>Destination</ion-card-subtitle>
+        <ion-card-title>Madison, WI</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the
+        Wisconsin Territory in 1836.
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <img src="../../assets/img/imagen2.jpg" />
+      <ion-card-header>
+        <ion-card-subtitle>Destination</ion-card-subtitle>
+        <ion-card-title>Madison, WI</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the
+        Wisconsin Territory in 1836.
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+<ion-content *ngIf="isLogged && !isAdmin">
+  <div class="ion-padding">
+    <div>
+      <ion-text-center>
+        <h3>HOLA empleado</h3>
+      </ion-text-center>
+    </div>
+    <ion-card>
+      <img src="../../assets/img/imagen2.jpg" />
+      <ion-card-header>
+        <ion-card-subtitle>Destination</ion-card-subtitle>
+        <ion-card-title>Madison, WI</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the
+        Wisconsin Territory in 1836.
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

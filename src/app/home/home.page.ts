@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,25 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  isLogged: boolean = false;
+  username: string = "kevin";
+  isAdmin;
+  constructor(private tokenService: TokenService) {
+
+  }
+
+  //transicion entre pagina
+  ionViewWillEnter() {
+    this.estaLogeado();
+
+  }
+
+
+  estaLogeado() {
+    this.isLogged = this.tokenService.getToken() != null;
+    this.username = this.tokenService.getUsername();
+    this.isAdmin = this.tokenService.getAuthorities().length > 1; // si tiene mas de un rol
+
+  }
 
 }
